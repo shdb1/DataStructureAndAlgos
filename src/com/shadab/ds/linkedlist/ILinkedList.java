@@ -6,6 +6,9 @@ public interface ILinkedList {
 	public boolean removeElement(String data) throws Exception;
 	public void traverseLinkedList();
 	public int searchElementIndex(String data);
+	public String findMiddleElement();
+	public void reverseLinkedList();
+	public void traverseGivenLinkedList(Node initialNode);
 	
 
 }

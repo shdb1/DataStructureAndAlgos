@@ -85,4 +85,67 @@ public class LinkedList implements ILinkedList {
 		return -1;
 	}
 
+	@Override
+	public String findMiddleElement() {
+		// TODO Auto-generated method stub
+ 		Node myTemporarySlowNode= initialNode;
+		Node myTemporaryFastNode= initialNode;
+		int counter=1;
+		int middleIndexIs;
+		Node middleNode=null;
+		if(initialNode==null ) {
+			return "linkedlist is empty";
+		}
+		else if (initialNode==lastNode) {
+			return "linked list has only one element and element is"+initialNode.data;
+		}
+		else {
+			while(myTemporaryFastNode.nextNode!=null) {
+ 				myTemporarySlowNode=myTemporarySlowNode.nextNode;
+				myTemporaryFastNode=myTemporaryFastNode.nextNode.nextNode;
+				counter++;
+				
+			}
+			if(counter%2!=0)
+				middleIndexIs=counter+1/2;
+			else
+				middleIndexIs=counter;
+			
+		}
+		
+		return "Middle Index is:"+middleIndexIs+" middle data is:"+myTemporarySlowNode.data;
+	}
+
+	@Override
+	public void reverseLinkedList() {
+		// TODO Auto-generated method stub
+		
+		Node prevNode=null;
+		Node headNode=initialNode;
+		Node current=initialNode;
+ 		while(current!=null) {
+  			headNode=current;
+ 			current=current.nextNode;
+ 			headNode.nextNode=prevNode;
+  			prevNode=headNode;	
+			
+		}
+ 		
+ 		traverseGivenLinkedList(headNode);
+		
+	}
+
+	@Override
+	public void traverseGivenLinkedList(Node initialNode) {
+		// TODO Auto-generated method stub
+		
+		
+		 
+ 		while (initialNode != null) {
+			System.out.println(initialNode.data);
+			initialNode = initialNode.nextNode;
+			}
+		
+	}
+
 }

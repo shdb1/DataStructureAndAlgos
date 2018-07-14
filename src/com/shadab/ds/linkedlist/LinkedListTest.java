@@ -24,6 +24,10 @@ public class LinkedListTest {
 		System.out.println(linkedList.searchElementIndex("item-5"));
 		System.out.println("gonna search element item-10  it should return -1 bcz we have removed it already");
 		System.out.println(linkedList.searchElementIndex("item-10"));
+		System.out.println("Middle Element is :"+linkedList.findMiddleElement());
+		System.out.println("Reversing linkedlist:");
+ 		linkedList.reverseLinkedList();
+  		
 	} catch (Exception e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
