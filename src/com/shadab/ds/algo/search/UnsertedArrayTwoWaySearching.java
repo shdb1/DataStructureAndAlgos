@@ -1,5 +1,8 @@
 package com.shadab.ds.algo.search;
 
+
+
+
 public class UnsertedArrayTwoWaySearching {
 	
 	public static void main(String[] args) {
@@ -51,3 +54,32 @@ public static boolean searchElementInTwoDirections(int[] dataArray,int elementTo
 }
 
 }
+
+/*OUTPUTS:-
+
+Two way scan output
+-------------------------
+2188
+2188
+2188
+1094
+364
+729
+2188
+1094
+1094
+1823
+
+
+One Way Scan output
+-------------
+730
+730
+730
+729
+1459
+729
+365
+729
+1824
+1823*/
