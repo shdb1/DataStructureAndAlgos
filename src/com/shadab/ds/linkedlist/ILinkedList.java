@@ -9,6 +9,7 @@ public interface ILinkedList {
 	public String findMiddleElement();
 	public void reverseLinkedList();
 	public void traverseGivenLinkedList(Node initialNode);
+	public Node insertNodeAtSpecificLoc(Node initialNode,int data,int loc);
 	
 
 }

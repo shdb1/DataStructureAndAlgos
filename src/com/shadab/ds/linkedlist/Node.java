@@ -9,5 +9,17 @@ public class Node {
 		this.data=data;
 		this.nextNode=nextNode;
 	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		StringBuilder sb = new StringBuilder(data);
+		while (nextNode!=null) {
+			sb.append("/n").append(nextNode.data);
+			nextNode=nextNode.nextNode;
+			
+		}
+		return sb.toString();
+	}
 
 }

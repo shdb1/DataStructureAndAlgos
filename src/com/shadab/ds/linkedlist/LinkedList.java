@@ -2,28 +2,27 @@ package com.shadab.ds.linkedlist;
 
 public class LinkedList implements ILinkedList {
 
-	Node initialNode;
-	Node lastNode;
+	Node node;
 	String data;
 
 	public LinkedList() {
 		// TODO Auto-generated constructor stub
 
-		initialNode = null;
-		lastNode = null;
-		data = null;
 	}
 
 	@Override
 	public void addElement(String data) {
 		// TODO Auto-generated method stub
 
-		if (initialNode == null) {
-			initialNode = new Node(data, null);
-			lastNode = initialNode;
+		if (node == null) {
+			this.node = new Node(data, null);
 		} else {
-			lastNode.nextNode = new Node(data, null);
-			lastNode = lastNode.nextNode;
+			Node nextNode = null;
+			while(node.nextNode != null)
+			{
+				nextNode = this.node.nextNode;
+			}
+			nextNode.nextNode = new Node(data, null);
 		}
 
 	}
@@ -32,9 +31,9 @@ public class LinkedList implements ILinkedList {
 	public boolean removeElement(String data) throws Exception {
 		// TODO Auto-generated method stub
 
-		if (initialNode == null)
+		if (node == null)
 			throw new Exception("empty linked list");
-		Node temp = initialNode;
+		Node temp = node;
 		Node prevNodeTemp = null;
 		while (temp != null) {
  			if (temp.data.equals(data)) {
@@ -55,7 +54,7 @@ public class LinkedList implements ILinkedList {
 	public void traverseLinkedList() {
 		// TODO Auto-generated method stub
 		
-		Node temp = initialNode;
+		Node temp = node;
  		while (temp != null) {
 			System.out.println(temp.data);
 			temp = temp.nextNode;
@@ -70,7 +69,7 @@ public class LinkedList implements ILinkedList {
 	public int searchElementIndex(String data) {
 		// TODO Auto-generated method stub
 		
-		Node temp = initialNode;
+		Node temp = node;
  		int currentIndex=0;
 		while (temp != null) {
  			if (temp.data.equals(data)) {
@@ -88,16 +87,16 @@ public class LinkedList implements ILinkedList {
 	@Override
 	public String findMiddleElement() {
 		// TODO Auto-generated method stub
- 		Node myTemporarySlowNode= initialNode;
-		Node myTemporaryFastNode= initialNode;
+ 		Node myTemporarySlowNode= node;
+		Node myTemporaryFastNode= node;
 		int counter=1;
 		int middleIndexIs;
 		Node middleNode=null;
-		if(initialNode==null ) {
+		if(node==null ) {
 			return "linkedlist is empty";
 		}
-		else if (initialNode==lastNode) {
-			return "linked list has only one element and element is"+initialNode.data;
+		else if (node==node.nextNode) {
+			return "linked list has only one element and element is"+node.data;
 		}
 		else {
 			while(myTemporaryFastNode.nextNode!=null) {
@@ -121,8 +120,8 @@ public class LinkedList implements ILinkedList {
 		// TODO Auto-generated method stub
 		
 		Node prevNode=null;
-		Node headNode=initialNode;
-		Node current=initialNode;
+		Node headNode=node;
+		Node current=node;
  		while(current!=null) {
   			headNode=current;
  			current=current.nextNode;
@@ -145,6 +144,47 @@ public class LinkedList implements ILinkedList {
 			System.out.println(initialNode.data);
 			initialNode = initialNode.nextNode;
 			}
+		
+	}
+
+	@Override
+	public Node insertNodeAtSpecificLoc(Node initialNode,int data, int loc) {
+		// TODO Auto-generated method stub
+		/* we should traverse the node until 
+		 * that particular position comes
+		 * and insert the new node there
+		 * 
+		 * so steps should be :
+		 * 1. prepare a node keep to/fro null for it .
+		 * 2. Find the position & inject created node there.
+		 * 3. Return the head node 
+		 * */
+		
+		// create node
+		Node newDataNode = new Node(String.valueOf(data), null);
+		// now find the location
+		if (initialNode== null)
+			return null;
+		boolean iterate = true;
+		int locationTraversed=0;
+		Node currentNode = initialNode;
+		while (iterate) {
+			if(currentNode.nextNode !=null) {
+				locationTraversed++;
+				currentNode=currentNode.nextNode;
+			}else
+			{
+				iterate=false;
+			}
+			
+			if(locationTraversed==loc) {
+				newDataNode.nextNode = 	currentNode.nextNode;
+				currentNode.nextNode = newDataNode;
+			}
+			    
+		}
+		
+		return currentNode;
 		
 	}
 
