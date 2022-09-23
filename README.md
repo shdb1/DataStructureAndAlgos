@@ -1,2 +1,2 @@
 # DataStructureAndAlgos
-ds and algos .
+ds and algos 
